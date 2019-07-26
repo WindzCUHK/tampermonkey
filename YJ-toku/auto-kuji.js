@@ -5,7 +5,7 @@
 // @version      1.0
 // @namespace    https://github.com/WindzCUHK/tampermonkey
 // @author       Windz
-// @downloadURL  https://github.com/WindzCUHK/tampermonkey/YJ-toku/auto-kuji.js
+// @downloadURL  https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/YJ-toku/auto-kuji.js
 // @grant        none
 // ==/UserScript==
 
