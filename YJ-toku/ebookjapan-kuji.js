@@ -2,7 +2,7 @@
 // @name         YJ-toku, ebookjapan kuji
 // @description  auto click, and close
 // @match        https://ebookjapan.yahoo.co.jp/special/zubatoku/mangakuji/*
-// @version      1.0
+// @version      1.0.0
 // @namespace    https://github.com/WindzCUHK/tampermonkey
 // @author       Windz
 // @downloadURL  https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/YJ-toku/ebookjapan-kuji.js

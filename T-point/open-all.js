@@ -1,11 +1,11 @@
 // ==UserScript==
-// @name         YJ-toku, open all
+// @name         T-point, open all
 // @description  add open all button
-// @match        https://toku.yahoo.co.jp/campaign
+// @match        https://appapi.net/cpmtm/public/*
 // @version      1.0.0
 // @namespace    https://github.com/WindzCUHK/tampermonkey
 // @author       Windz
-// @downloadURL  https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/YJ-toku/open-all.js
+// @downloadURL  https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/T-point/open-all.js
 // @require      https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/_require/DualClickEventListener.js
 // @grant        none
 // ==/UserScript==
@@ -13,17 +13,12 @@
 (function() {
 	'use strict';
 
-	// YJ only
-	if ($) $('li.cmpTab__possible').click();
-
 	const action = (event) => {
-		Array.from(document.querySelectorAll('ul.cmpList__possible li.cmpBox'))
-			.map(li => li.querySelector('a'))
+		Array.from(document.querySelectorAll('div.playcnt'))
+			.filter(ele => ele.textContent.length > 0)
+			.map(ele => ele.parentNode.parentNode.querySelector("div.item_img > a"))
 			.map(a => a.href)
-			.filter(link => !link.startsWith("https://rdsig.yahoo.co.jp/slotkuji/zubatop/RV=1/RU=a"))
-			.filter(link => !link.startsWith("https://toku.yahoo.co.jp/mutb/entry/"))
 			.forEach(link => window.open(link, '_blank'));
-		// window.open("https://rims.tr.mufg.jp/?y=true", '_blank');
 	};
 	const button = document.createElement("button");
 	button.innerHTML = "Open ALL";
