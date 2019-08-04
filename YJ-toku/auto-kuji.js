@@ -2,7 +2,7 @@
 // @name         YJ-toku, auto kuji
 // @description  auto click kuji button
 // @match        https://toku.yahoo.co.jp/*/lot*
-// @version      1.0.1
+// @version      1.0.2
 // @namespace    https://github.com/WindzCUHK/tampermonkey
 // @author       Windz
 // @downloadURL  https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/YJ-toku/auto-kuji.js
@@ -17,6 +17,7 @@
 	if (btn) btn.click();
 
 	// remove promo banner
-	document.querySelector(".marginB20").style.zoom = '0.22'
+	const banner = document.querySelector(".textCenter.pcBox > .marginB20");
+	if (banner) banner.style.zoom = '0.22';
 
 })();
