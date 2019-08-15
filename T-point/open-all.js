@@ -2,7 +2,7 @@
 // @name         T-point, open all
 // @description  add open all button
 // @match        https://appapi.net/cpmtm/public/*
-// @version      1.0.0
+// @version      1.0.1
 // @namespace    https://github.com/WindzCUHK/tampermonkey
 // @author       Windz
 // @downloadURL  https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/T-point/open-all.js
@@ -17,7 +17,7 @@
 		Array.from(document.querySelectorAll('div.playcnt'))
 			.filter(ele => ele.textContent.length > 0)
 			.map(ele => ele.parentNode.parentNode.querySelector("div.item_img > a"))
-			.map(a => a.href)
+			.map(a => a.href.split('?')[0] + 'lottery')
 			.forEach(link => window.open(link, '_blank'));
 	};
 	const button = document.createElement("button");
