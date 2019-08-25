@@ -2,7 +2,7 @@
 // @name         YJ-toku, auto kuji
 // @description  auto click kuji button
 // @match        https://toku.yahoo.co.jp/*/lot*
-// @version      1.0.3
+// @version      1.0.4
 // @namespace    https://github.com/WindzCUHK/tampermonkey
 // @author       Windz
 // @downloadURL  https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/YJ-toku/auto-kuji.js
@@ -14,7 +14,7 @@
 
 	// auto click
 	const input = $('.btnActionKeyword__inputText');
-	if (!input) {
+	if (input.length === 0) {
 		// prevent refresh for keyword input
 		const btn = $('#btnLot');
 		if (btn) btn.click();
