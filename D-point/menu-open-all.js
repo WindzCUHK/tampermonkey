@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         D-point, menu open all
 // @description  add open all button
-// @match        https://dpoint.jp/ctrw/web3/dpointclubland/index.html*
-// @version      1.0.1
+// @match        https://dpoint.jp/content/land/index.html
+// @version      1.0.2
 // @namespace    https://github.com/WindzCUHK/tampermonkey
 // @author       Windz
 // @downloadURL  https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/D-point/menu-open-all.js
@@ -29,8 +29,8 @@
 			.filter(link => !link.startsWith("https://d.dmkt-sp.jp/campaign/point_get_poinco2/index.html"))
 			.filter(link => !link.startsWith("https://d.dmkt-sp.jp/kuji/common/go_to_kuji_page.html"))
 			.filter(link => !link.startsWith("https://d.dmkt-sp.jp/sugoroku/"))
-			.filter(link => !link.startsWith("https://d.dmkt-sp.jp/zukan/start/index.html"))
-			.filter(link => !link.startsWith("https://dpoint.jp/ctrw/web3/largeamount/"))
+			.filter(link => !link.startsWith("https://d.dmkt-sp.jp/zukan/point_cp_yamawake/index.html"))
+			.filter(link => !link.startsWith("https://dpoint.jp/content/largeamount/index.html"))
 			.filter(link => !link.startsWith("https://dpoint.jp/ctrw/exp/dpcfelica/index.html"))
 			.filter(link => !link.startsWith("https://dpoint.jp/ctrw/web/coupon"))
 			.filter(link => !link.startsWith("https://dpoint.jp/ctrw/cp3/bathclin/"))
