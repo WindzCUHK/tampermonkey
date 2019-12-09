@@ -27,6 +27,7 @@
 			.filter(link => !link.startsWith("https://www.dcm-b.jp/"))
 			.filter(link => !link.startsWith("https://gp.dmkt-sp.jp/"))
 			.filter(link => !link.startsWith("https://gourmet.dmkt-sp.jp/gourmet/contents/login/campaign/webpromo"))
+			.filter(link => !link.startsWith("https://service.smt.docomo.ne.jp/portal/promotion/src/mymagazine_cp1_19_Tw01.html"))
 			.filter(link => !link.startsWith("https://d.dmkt-sp.jp/campaign/point_get_trialkuji/index.html"))
 			.filter(link => !link.startsWith("https://d.dmkt-sp.jp/campaign/point_get_poinco2/index.html"))
 			.filter(link => !link.startsWith("https://d.dmkt-sp.jp/kuji/common/go_to_kuji_page.html"))
