@@ -2,7 +2,7 @@
 // @name         D-point, menu open all
 // @description  add open all button
 // @match        https://dpoint.jp/content/land/index.html
-// @version      1.0.3
+// @version      1.0.4
 // @namespace    https://github.com/WindzCUHK/tampermonkey
 // @author       Windz
 // @downloadURL  https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/D-point/menu-open-all.js
@@ -38,6 +38,7 @@
 			.filter(link => !link.startsWith("https://dpoint.jp/ctrw/web/coupon"))
 			.filter(link => !link.startsWith("https://dpoint.jp/ctrw/cp3/bathclin/"))
 			.filter(link => !link.startsWith("https://dpoint.jp/ctrw/cp3/euglena/"))
+			.filter(link => !link.startsWith("https://dpoint.jp/ctrw/town/machiq/index.html"))
 			.forEach(link => window.open(link, '_blank'));
 
 		window.open("https://d.dmkt-sp.jp/kuji/common/index.html", '_blank');
@@ -50,5 +51,8 @@
 
 	const body = document.body;
 	body.appendChild(button);
+
+	// move login kuji
+	document.getElementById('land_gca_03').style = 'position: fixed;bottom: 150px;z-index: 9999;box-shadow: 0px 0px 5px 30px gray;/* height: 400px; */left: 50px;overflow: hidden;/* border: 10px yellow solid; */width: 272px;height: 216px;'
 
 })();
