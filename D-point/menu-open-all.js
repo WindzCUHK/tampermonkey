@@ -2,7 +2,7 @@
 // @name         D-point, menu open all
 // @description  add open all button
 // @match        https://dpoint.jp/content/land/index.html
-// @version      1.0.4
+// @version      1.0.5
 // @namespace    https://github.com/WindzCUHK/tampermonkey
 // @author       Windz
 // @downloadURL  https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/D-point/menu-open-all.js
@@ -23,21 +23,16 @@
 			.filter(link => !link.startsWith("https://hiroba.dpoint.jp/kuji/garagara"))
 			.filter(link => !link.startsWith("https://hiroba.dpoint.jp/sugotoku/about"))
 			.filter(link => !link.startsWith("https://www.smbcnikko.co.jp/products/inv/toshin_lab/index.html"))
-			.filter(link => !link.startsWith("http://rewardplatform.jp/"))
 			.filter(link => !link.startsWith("https://www.dcm-b.jp/"))
 			.filter(link => !link.startsWith("https://gp.dmkt-sp.jp/"))
 			.filter(link => !link.startsWith("https://gourmet.dmkt-sp.jp/gourmet/contents/login/campaign/webpromo"))
-			.filter(link => !link.startsWith("https://service.smt.docomo.ne.jp/portal/promotion/src/mymagazine_cp1_19_Tw01.html"))
-			.filter(link => !link.startsWith("https://d.dmkt-sp.jp/campaign/point_get_trialkuji/index.html"))
-			.filter(link => !link.startsWith("https://d.dmkt-sp.jp/campaign/point_get_poinco2/index.html"))
+			// https://service.smt.docomo.ne.jp/portal/promotion/src/mymagazine_cp1_19_Tw01.html
+			.filter(link => !link.startsWith("https://go.onelink.me/UuOX/3be803bf"))
 			.filter(link => !link.startsWith("https://d.dmkt-sp.jp/kuji/common/go_to_kuji_page.html"))
-			.filter(link => !link.startsWith("https://d.dmkt-sp.jp/sugoroku/"))
-			.filter(link => !link.startsWith("https://d.dmkt-sp.jp/zukan/start/index.html"))
+			.filter(link => !link.startsWith("https://d.dmkt-sp.jp/zukan/point_cp_yamawake/index.html"))
+			.filter(link => !link.startsWith("https://d.dmkt-sp.jp/common/mypage_mytoku/index.html"))
 			.filter(link => !link.startsWith("https://dpoint.jp/content/largeamount/index.html"))
 			.filter(link => !link.startsWith("https://dpoint.jp/ctrw/exp/dpcfelica/index.html"))
-			.filter(link => !link.startsWith("https://dpoint.jp/ctrw/web/coupon"))
-			.filter(link => !link.startsWith("https://dpoint.jp/ctrw/cp3/bathclin/"))
-			.filter(link => !link.startsWith("https://dpoint.jp/ctrw/cp3/euglena/"))
 			.filter(link => !link.startsWith("https://dpoint.jp/ctrw/town/machiq/index.html"))
 			.forEach(link => window.open(link, '_blank'));
 
