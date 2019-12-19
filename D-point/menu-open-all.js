@@ -2,7 +2,7 @@
 // @name         D-point, menu open all
 // @description  add open all button
 // @match        https://dpoint.jp/content/land/index.html
-// @version      1.0.5
+// @version      1.0.6
 // @namespace    https://github.com/WindzCUHK/tampermonkey
 // @author       Windz
 // @downloadURL  https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/D-point/menu-open-all.js
@@ -34,6 +34,7 @@
 			.filter(link => !link.startsWith("https://dpoint.jp/content/largeamount/index.html"))
 			.filter(link => !link.startsWith("https://dpoint.jp/ctrw/exp/dpcfelica/index.html"))
 			.filter(link => !link.startsWith("https://dpoint.jp/ctrw/town/machiq/index.html"))
+			.filter(link => !link.startsWith("https://dpoint.jp/ctrw/web/coupon/platinum_coup.html"))
 			.forEach(link => window.open(link, '_blank'));
 
 		window.open("https://d.dmkt-sp.jp/kuji/common/index.html", '_blank');
