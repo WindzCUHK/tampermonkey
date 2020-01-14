@@ -2,7 +2,7 @@
 // @name         D-point, menu open all
 // @description  add open all button
 // @match        https://dpoint.jp/content/land/index.html
-// @version      1.0.6
+// @version      1.0.7
 // @namespace    https://github.com/WindzCUHK/tampermonkey
 // @author       Windz
 // @downloadURL  https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/D-point/menu-open-all.js
@@ -26,8 +26,7 @@
 			.filter(link => !link.startsWith("https://www.dcm-b.jp/"))
 			.filter(link => !link.startsWith("https://gp.dmkt-sp.jp/"))
 			.filter(link => !link.startsWith("https://gourmet.dmkt-sp.jp/gourmet/contents/login/campaign/webpromo"))
-			// https://service.smt.docomo.ne.jp/portal/promotion/src/mymagazine_cp1_19_Tw01.html
-			.filter(link => !link.startsWith("https://go.onelink.me/UuOX/3be803bf"))
+			.filter(link => !link.startsWith("https://service.smt.docomo.ne.jp/portal/promotion/src/2020-thankyou_cp.html"))
 			.filter(link => !link.startsWith("https://d.dmkt-sp.jp/kuji/common/go_to_kuji_page.html"))
 			.filter(link => !link.startsWith("https://d.dmkt-sp.jp/zukan/point_cp_yamawake/index.html"))
 			.filter(link => !link.startsWith("https://d.dmkt-sp.jp/common/mypage_mytoku/index.html"))
