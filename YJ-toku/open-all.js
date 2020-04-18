@@ -2,7 +2,7 @@
 // @name         YJ-toku, open all
 // @description  add open all button
 // @match        https://toku.yahoo.co.jp/campaign
-// @version      1.0.0
+// @version      1.0.1
 // @namespace    https://github.com/WindzCUHK/tampermonkey
 // @author       Windz
 // @downloadURL  https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/YJ-toku/open-all.js
@@ -20,17 +20,35 @@
 		Array.from(document.querySelectorAll('ul.cmpList__possible li.cmpBox'))
 			.map(li => li.querySelector('a'))
 			.map(a => a.href)
-			.filter(link => !link.startsWith("https://rdsig.yahoo.co.jp/slotkuji/zubatop/RV=1/RU=a"))
 			.filter(link => !link.startsWith("https://toku.yahoo.co.jp/mutb/entry/"))
+			.filter(link => !link.startsWith("https://t-mall.tsite.jp/c/p/toku_tpoint/"))
 			.forEach(link => window.open(link, '_blank'));
 		// window.open("https://rims.tr.mufg.jp/?y=true", '_blank');
 	};
+
+	// video textarea
+	const textarea = document.createElement("textarea");
+	textarea.style.cssText = "position:fixed;bottom:0;left:0;width:80%;height:50px;z-index:999;margin:auto;bottom:0;right:0;background-color:pink;font-size:small;";
+	// button.addEventListener("click", new DualClickEventListener(action));
+	textarea.value = localStorage.getItem('gyao_urls');
+
+	// open all button
 	const button = document.createElement("button");
 	button.innerHTML = "Open ALL";
 	button.style.cssText = "position:fixed;top:80%;left:0;width:80%;height:100px;z-index:999;margin:auto;bottom:0;right:0;background-color:red;font-size:xx-large;";
 	button.addEventListener("click", new DualClickEventListener(action));
+	button.addEventListener("click", (e) => {
+		// format: newline separated list
+		textarea.value
+			.split('\n')
+			.filter(l => l.length > 0)
+			.forEach(link => window.open(link.trim(), '_blank'));
+
+		localStorage.setItem('gyao_urls', textarea.value);
+	});
 
 	const body = document.body;
 	body.appendChild(button);
+	body.appendChild(textarea);
 
 })();
