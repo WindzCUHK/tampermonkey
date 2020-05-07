@@ -2,7 +2,7 @@
 // @name         D-point, menu open all
 // @description  add open all button
 // @match        https://dpoint.jp/content/land/index.html
-// @version      1.0.8
+// @version      1.0.9
 // @namespace    https://github.com/WindzCUHK/tampermonkey
 // @author       Windz
 // @downloadURL  https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/D-point/menu-open-all.js
@@ -21,6 +21,7 @@
 			.filter(link => !link.startsWith("https://hiroba.dpoint.jp/?"))
 			.filter(link => !link.startsWith("https://hiroba.dpoint.jp/game"))
 			.filter(link => !link.startsWith("https://hiroba.dpoint.jp/kuji/garagara"))
+			.filter(link => !link.startsWith("https://hiroba.dpoint.jp/kuji/keyword"))
 			.filter(link => !link.startsWith("https://hiroba.dpoint.jp/sugotoku/about"))
 			.filter(link => !link.startsWith("https://www.smbcnikko.co.jp/products/inv/toshin_lab/index.html"))
 			.filter(link => !link.startsWith("https://www.dcm-b.jp/"))
@@ -39,6 +40,11 @@
 
 		window.open("https://d.dmkt-sp.jp/kuji/common/index.html", '_blank');
 		window.open("https://d.dmkt-sp.jp/sugoroku/start/index.html", '_blank');
+
+		if (new Date().getDay() === 3) {
+			window.open("https://usedoor.jp/howto/life/campaign/d-point-club-keyword-amidakuji/", '_blank');
+			window.open("https://hiroba.dpoint.jp/kuji/keyword", '_blank');
+		}
 	};
 	const button = document.createElement("button");
 	button.innerHTML = "Open ALL";
