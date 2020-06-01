@@ -2,7 +2,7 @@
 // @name         D-point, menu open all
 // @description  add open all button
 // @match        https://dpoint.jp/content/land/index.html
-// @version      1.0.10
+// @version      1.0.11
 // @namespace    https://github.com/WindzCUHK/tampermonkey
 // @author       Windz
 // @downloadURL  https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/D-point/menu-open-all.js
@@ -24,7 +24,6 @@
 			.filter(link => !link.startsWith("https://hiroba.dpoint.jp/kuji/keyword"))
 			.filter(link => !link.startsWith("https://hiroba.dpoint.jp/sugotoku/about"))
 			.filter(link => !link.startsWith("https://www.smbcnikko.co.jp/products/inv/toshin_lab/index.html"))
-			https://d.dmkt-sp.jp/zukan/point_cp_yamawake/index.html
 			.filter(link => !link.startsWith("https://www.dcm-b.jp/"))
 			.filter(link => !link.startsWith("https://gp.dmkt-sp.jp/"))
 			.filter(link => !link.startsWith("https://gourmet.dmkt-sp.jp/gourmet/contents/login/campaign/webpromo"))
