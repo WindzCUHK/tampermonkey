@@ -2,7 +2,7 @@
 // @name         D-point, menu open all
 // @description  add open all button
 // @match        https://dpoint.jp/content/land/index.html
-// @version      1.0.11
+// @version      1.0.12
 // @namespace    https://github.com/WindzCUHK/tampermonkey
 // @author       Windz
 // @downloadURL  https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/D-point/menu-open-all.js
@@ -37,10 +37,14 @@
 			.filter(link => !link.startsWith("https://dpoint.jp/ctrw/exp/dpcfelica/index.html"))
 			.filter(link => !link.startsWith("https://dpoint.jp/ctrw/town/machiq/index.html"))
 			.filter(link => !link.startsWith("https://dpoint.jp/coupon/platinum/index.html"))
+			.filter(link => !link.startsWith("https://mymagazine.onelink.me/"))
+			.filter(link => !link.startsWith("https://magazine.dmkt-sp.jp/campaign/6th_aniv_newcomer"))
 			.forEach(link => window.open(link, '_blank'));
 
 		window.open("https://d.dmkt-sp.jp/kuji/common/index.html", '_blank');
 		window.open("https://d.dmkt-sp.jp/sugoroku/start/index.html", '_blank');
+
+		window.open("http://ronacthrace.blog.fc2.com/", '_blank');
 
 		if (new Date().getDay() === 3) {
 			window.open("https://usedoor.jp/howto/life/campaign/d-point-club-keyword-amidakuji/", '_blank');

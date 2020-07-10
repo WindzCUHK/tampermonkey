@@ -2,7 +2,7 @@
 // @name         YJ-toku, open all
 // @description  add open all button
 // @match        https://toku.yahoo.co.jp/campaign
-// @version      1.0.2
+// @version      1.0.3
 // @namespace    https://github.com/WindzCUHK/tampermonkey
 // @author       Windz
 // @downloadURL  https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/YJ-toku/open-all.js
@@ -25,7 +25,7 @@
 			.filter(link => !link.startsWith("https://toku-qr.yahoo.co.jp/botanist202006"))
 			.filter(link => !link.startsWith("https://toku-qr.yahoo.co.jp/asahi202006"))
 			.forEach(link => window.open(link, '_blank'));
-		window.open("https://rims.tr.mufg.jp/?y=true", '_blank');
+		// window.open("https://rims.tr.mufg.jp/?y=true", '_blank');
 	};
 
 	// video textarea
