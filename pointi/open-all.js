@@ -1,8 +1,9 @@
 // ==UserScript==
-// @name         pointi, open all
+// @icon         https://www.google.com/s2/favicons?domain=pointi.jp
+// @name         pointi, daily click, open all
 // @description  add open all button
 // @match        https://pointi.jp/daily.php
-// @version      1.0.0
+// @version      1.0.1
 // @namespace    https://github.com/WindzCUHK/tampermonkey
 // @author       Windz
 // @downloadURL  https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/pointi/open-all.js
@@ -16,7 +17,7 @@
 	const action = (event) => {
 		Array.from(document.querySelectorAll('.click_btn_wrap div:not(.click_btn_off)'))
 			.map(div => div.parentNode.href)
-			.forEach(link => window.open(link, '_blank'));
+			.forEach(link => fetch(link));
 	};
 	const button = document.createElement("button");
 	button.innerHTML = "Open ALL";
