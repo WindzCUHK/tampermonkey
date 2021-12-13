@@ -6,7 +6,7 @@
 // @version      1.0.0
 // @namespace    https://github.com/WindzCUHK/tampermonkey
 // @author       Windz
-// @downloadURL  https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/pointi/open-all.js
+// @downloadURL  https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/pointi/magazine.js
 // @require      https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/_require/DualClickEventListener.js
 // @grant        none
 // ==/UserScript==

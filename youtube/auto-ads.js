@@ -11,7 +11,7 @@
 // ==/UserScript==
 
 (function() {
-    'use strict';
+	'use strict';
 
 const MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
 const ads = document.getElementsByClassName("video-ads")[0];
@@ -22,12 +22,12 @@ const observer = new MutationObserver((mutations) => {
 			console.log(mutation)
 
 			// skip ads
-            if (document.getElementsByClassName("ytp-ad-skip-button").length) {
-                document.getElementsByClassName("ytp-ad-skip-button")[0].click()
-            }
-            if (document.getElementsByClassName("ytp-ad-overlay-close-button").length) {
-                document.getElementsByClassName("ytp-ad-overlay-close-button")[0].click()
-            }
+			if (document.getElementsByClassName("ytp-ad-skip-button").length) {
+				document.getElementsByClassName("ytp-ad-skip-button")[0].click()
+			}
+			if (document.getElementsByClassName("ytp-ad-overlay-close-button").length) {
+				document.getElementsByClassName("ytp-ad-overlay-close-button")[0].click()
+			}
 		}
 	});
 });
