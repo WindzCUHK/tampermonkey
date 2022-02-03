@@ -3,7 +3,7 @@
 // @name         pointi, magazine, auto forward
 // @description  auto click to the end
 // @match        https://pointi.jp/contents/magazine/*
-// @version      1.0.0
+// @version      1.0.1
 // @namespace    https://github.com/WindzCUHK/tampermonkey
 // @author       Windz
 // @downloadURL  https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/pointi/magazine.js
@@ -25,6 +25,13 @@
 		button.innerHTML = "Open ALL";
 		button.style.cssText = "position:fixed;top:80%;left:0;width:80%;height:100px;z-index:999;margin:auto;bottom:0;right:0;background-color:red;font-size:xx-large;";
 		button.addEventListener("click", new DualClickEventListener(action));
+
+		// cmd + E => open all
+		document.addEventListener('keydown', (e) => {
+			if (e.metaKey && e.key === 'e') {
+				button.click();
+			}
+		});
 	
 		const body = document.body;
 		body.appendChild(button);
