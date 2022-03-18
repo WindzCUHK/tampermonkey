@@ -1,12 +1,13 @@
 // ==UserScript==
-// @icon         https://www.google.com/s2/favicons?domain=pointi.jp
 // @name         pointi, daily click, open all
+// @icon         https://www.google.com/s2/favicons?domain=pointi.jp
 // @description  add open all button
 // @match        https://pointi.jp/daily.php
-// @version      1.0.2
+// @version      1.0.3
 // @namespace    https://github.com/WindzCUHK/tampermonkey
 // @author       Windz
 // @downloadURL  https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/pointi/open-all.js
+// @updateURL    https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/pointi/open-all.js
 // @require      https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/_require/DualClickEventListener.js
 // @grant        none
 // ==/UserScript==

@@ -1,12 +1,13 @@
 // ==UserScript==
-// @icon         https://www.google.com/s2/favicons?domain=pointi.jp
 // @name         pointi, magazine, auto forward
+// @icon         https://www.google.com/s2/favicons?domain=pointi.jp
 // @description  auto click to the end
 // @match        https://pointi.jp/contents/magazine/*
-// @version      1.0.1
+// @version      1.0.2
 // @namespace    https://github.com/WindzCUHK/tampermonkey
 // @author       Windz
 // @downloadURL  https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/pointi/magazine.js
+// @updateURL  https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/pointi/magazine.js
 // @require      https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/_require/DualClickEventListener.js
 // @grant        none
 // ==/UserScript==
@@ -18,6 +19,7 @@
 	if (document.getElementById("link_list")) {
 		const action = (event) => {
 			Array.from(document.querySelectorAll("#link_list > li > a"))
+                .filter(a => !a.querySelector(".list_stamp_img"))
 				.map(a => a.href)
 				.forEach(link => window.open(link, '_blank'));
 		};
@@ -32,7 +34,7 @@
 				button.click();
 			}
 		});
-	
+
 		const body = document.body;
 		body.appendChild(button);
 		return;

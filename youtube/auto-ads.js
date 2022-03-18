@@ -1,12 +1,13 @@
 // ==UserScript==
-// @icon         https://www.google.com/s2/favicons?domain=pointi.jp
 // @name         auto skip ads
+// @icon         https://www.google.com/s2/favicons?domain=youtube.com
 // @description  auto click to skip ads button
 // @match        https://www.youtube.com/*
-// @version      1.0.0
+// @version      1.0.1
 // @namespace    https://github.com/WindzCUHK/tampermonkey
 // @author       Windz
 // @downloadURL  https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/youtube/auto-ads.js
+// @updateURL    https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/youtube/auto-ads.js
 // @grant        none
 // ==/UserScript==
 
