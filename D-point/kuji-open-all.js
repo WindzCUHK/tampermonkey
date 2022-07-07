@@ -1,11 +1,12 @@
 // ==UserScript==
 // @name         D-point, menu open all
 // @description  add open all button
-// @match        https://d.dmkt-sp.jp/kuji/common/index.html*
-// @version      1.0.0
+// @match        https://dmarket.docomo.ne.jp/kuji/common/index.html*
+// @version      1.0.1
 // @namespace    https://github.com/WindzCUHK/tampermonkey
 // @author       Windz
 // @downloadURL  https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/D-point/kuji-open-all.js
+// @updateURL    https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/D-point/kuji-open-all.js
 // @require      https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/_require/DualClickEventListener.js
 // @grant        none
 // ==/UserScript==

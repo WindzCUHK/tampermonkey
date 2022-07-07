@@ -1,11 +1,12 @@
 // ==UserScript==
 // @name         D-point, auto kuji
 // @description  auto click kuji button
-// @match        https://kuji.d.dmkt-sp.jp/kuji/*
-// @version      1.0.1
+// @match        https://kuji.dmarket.docomo.ne.jp/kuji/*
+// @version      1.0.2
 // @namespace    https://github.com/WindzCUHK/tampermonkey
 // @author       Windz
 // @downloadURL  https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/D-point/auto-kuji.js
+// @updateURL    https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/D-point/auto-kuji.js
 // @grant        none
 // ==/UserScript==
 
