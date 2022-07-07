@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         D-point, menu open all
+// @name         D-point, kuji open all
 // @description  add open all button
 // @match        https://dmarket.docomo.ne.jp/kuji/common/index.html*
 // @version      1.0.1
