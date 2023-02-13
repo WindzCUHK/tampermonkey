@@ -3,7 +3,7 @@
 // @icon         https://www.google.com/s2/favicons?domain=pointi.jp
 // @description  auto click to the end
 // @match        https://pointi.jp/contents/magazine/*
-// @version      1.0.3
+// @version      1.0.4
 // @namespace    https://github.com/WindzCUHK/tampermonkey
 // @author       Windz
 // @downloadURL  https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/pointi/magazine.js
@@ -19,7 +19,7 @@
 	if (document.getElementById("link_list")) {
 		const action = (event) => {
 			Array.from(document.querySelectorAll("#link_list > li > a"))
-				.filter(a => !a.querySelector(".list_stamp_img"))
+                .filter(a => !a.querySelector(".list_stamp_img"))
 				.map(a => a.href)
 				.forEach(link => window.open(link, '_blank'));
 		};
@@ -95,8 +95,8 @@
 				window.location.href = window.location.href;
 			}
 			window.opener = self;
-			window.close();
-		})
+			setTimeout(window.close, 1000);
+		});
 	}
 	const movePage = document.getElementById("move_page");
 	if (movePage) {
