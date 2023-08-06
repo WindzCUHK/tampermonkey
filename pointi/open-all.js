@@ -3,7 +3,7 @@
 // @icon         https://www.google.com/s2/favicons?domain=pointi.jp
 // @description  add open all button
 // @match        https://pointi.jp/daily.php
-// @version      1.0.3
+// @version      1.0.4
 // @namespace    https://github.com/WindzCUHK/tampermonkey
 // @author       Windz
 // @downloadURL  https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/pointi/open-all.js
@@ -16,7 +16,7 @@
 	'use strict';
 
 	const action = (event) => {
-		Array.from(document.querySelectorAll('.click_btn_wrap div:not(.click_btn_off)'))
+		Array.from(document.querySelectorAll('div.go_btn'))
 			.map(div => div.parentNode.href)
 			.forEach(link => fetch(link));
 	};
