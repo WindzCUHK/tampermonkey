@@ -3,7 +3,7 @@
 // @icon         https://www.google.com/s2/favicons?domain=youtube.com
 // @description  auto click to skip ads button
 // @match        https://www.youtube.com/*
-// @version      1.0.1
+// @version      1.0.2
 // @namespace    https://github.com/WindzCUHK/tampermonkey
 // @author       Windz
 // @downloadURL  https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/youtube/auto-ads.js
@@ -12,29 +12,54 @@
 // ==/UserScript==
 
 (function() {
-	'use strict';
+  'use strict';
 
 const MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
-const ads = document.getElementsByClassName("video-ads")[0];
+function waitForElementToExist(selector) {
+  return new Promise(resolve => {
+    if (document.querySelector(selector)) {
+      return resolve(document.querySelector(selector));
+    }
 
-const observer = new MutationObserver((mutations) => {
-	mutations.forEach((mutation) => {
-		if (mutation.type === 'childList') {
-			console.log(mutation)
+    const observer = new MutationObserver(() => {
+      if (document.querySelector(selector)) {
+        resolve(document.querySelector(selector));
+        observer.disconnect();
+      }
+    });
 
-			// skip ads
-			if (document.getElementsByClassName("ytp-ad-skip-button").length) {
-				document.getElementsByClassName("ytp-ad-skip-button")[0].click()
-			}
-			if (document.getElementsByClassName("ytp-ad-overlay-close-button").length) {
-				document.getElementsByClassName("ytp-ad-overlay-close-button")[0].click()
-			}
-		}
-	});
-});
-observer.observe(ads, {
-	subtree: true,
-	childList: true,
-});
+    observer.observe(document.body, {
+      subtree: true,
+      childList: true,
+    });
+  });
+}
+
+const main = async function() {
+  const ads = await waitForElementToExist('div.video-ads');
+  console.log('Element:', element);
+
+  // skip ads
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (mutation.type === 'childList') {
+        console.log(mutation)
+
+        // skip ads
+        if (document.getElementsByClassName("ytp-ad-skip-button").length) {
+          document.getElementsByClassName("ytp-ad-skip-button")[0].click()
+        }
+        if (document.getElementsByClassName("ytp-ad-overlay-close-button").length) {
+          document.getElementsByClassName("ytp-ad-overlay-close-button")[0].click()
+        }
+      }
+    });
+  });
+  observer.observe(ads, {
+    subtree: true,
+    childList: true,
+  });
+}
+main();
 
 })();
