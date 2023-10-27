@@ -37,7 +37,7 @@ function waitForElementToExist(selector) {
 
 const main = async function() {
   const ads = await waitForElementToExist('div.video-ads');
-  console.log('Element:', element);
+  console.log('Will auto skip ads under element:', ads);
 
   // skip ads
   const observer = new MutationObserver((mutations) => {
