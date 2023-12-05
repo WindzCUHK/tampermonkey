@@ -3,7 +3,7 @@
 // @icon         https://www.google.com/s2/favicons?domain=pointi.jp
 // @description  auto click to the end
 // @match        https://pointi.jp/contents/magazine/*
-// @version      1.0.7
+// @version      1.0.8
 // @namespace    https://github.com/WindzCUHK/tampermonkey
 // @author       Windz
 // @downloadURL  https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/pointi/magazine.js
@@ -42,6 +42,9 @@
 
 	// auto forward
 	function extractValue(text) {
+		if (text.indexOf("stamp_box") !== -1) {
+			throw new Error("END"); // for old specification
+		}
 		if (text.indexOf("スタンプは付与済みです") !== -1) {
 			throw new Error("END");
 		}
@@ -62,7 +65,9 @@
 		} else {
 			console.error(err);
 			// refresh tab to prevent error redirect
-			window.location.href = window.location.href;
+			setTimeout(() => {
+				window.location.href = window.location.href;	
+			}, 1000);
 		}
 		window.opener = self;
 		setTimeout(window.close, 1000);
