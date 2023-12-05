@@ -3,7 +3,7 @@
 // @icon         https://www.google.com/s2/favicons?domain=pointi.jp
 // @description  auto click to the end
 // @match        https://pointi.jp/contents/magazine/*
-// @version      1.0.5
+// @version      1.0.6
 // @namespace    https://github.com/WindzCUHK/tampermonkey
 // @author       Windz
 // @downloadURL  https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/pointi/magazine.js
@@ -19,7 +19,7 @@
 	if (document.getElementById("link_list")) {
 		const action = (event) => {
 			Array.from(document.querySelectorAll("#link_list > li > a"))
-                .filter(a => !a.querySelector(".list_stamp_img"))
+								.filter(a => !a.querySelector(".list_stamp_img"))
 				.map(a => a.href)
 				.forEach(link => window.open(link, '_blank'));
 		};
@@ -58,6 +58,18 @@
 		const endIdx = text.indexOf("='", startIdx);
 		return text.substring(startIdx + target.length, endIdx);
 	}
+	function closeSelf(err) {
+		if (err.message === "END") {
+			console.log("✅");
+			document.getElementById("outer").style.backgroundColor = "green";
+		} else {
+			console.error(err);
+			// refresh tab to prevent error redirect
+			window.location.href = window.location.href;
+		}
+		window.opener = self;
+		setTimeout(window.close, 1000);
+	}
 	let nextValue;
 	async function next(value) {
 		await fetch(window.location.href, {
@@ -89,21 +101,15 @@
 			next(nextValue);
 		})
 		.catch((err) => {
-			if (err.message === "END") {
-				console.log("✅");
-				document.getElementById("outer").style.backgroundColor = "green";
-			} else {
-				console.error(err);
-				// refresh tab to prevent error redirect
-				window.location.href = window.location.href;
-			}
-			window.opener = self;
-			setTimeout(window.close, 1000);
+			closeSelf(err);
 		});
 	}
 	const movePage = document.getElementById("move_page");
 	if (movePage) {
 		next(extractValue(movePage.parentNode.innerHTML));
+	}
+	if (document.body.innerText.search("スタンプは付与済みです") !== -1) {
+		closeSelf(new Error("END"));
 	}
 
 })();
