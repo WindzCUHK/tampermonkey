@@ -3,7 +3,7 @@
 // @icon         https://www.google.com/s2/favicons?domain=pointi.jp
 // @description  auto click to the end
 // @match        https://pointi.jp/contents/magazine/*
-// @version      1.0.4
+// @version      1.0.5
 // @namespace    https://github.com/WindzCUHK/tampermonkey
 // @author       Windz
 // @downloadURL  https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/pointi/magazine.js
@@ -43,6 +43,9 @@
 	// auto forward
 	function extractValue(text) {
 		if (text.search("stamp_box") !== -1) {
+			throw new Error("END");
+		}
+		if (text.search("スタンプは付与済みです") !== -1) {
 			throw new Error("END");
 		}
 
