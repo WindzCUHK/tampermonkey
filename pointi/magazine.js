@@ -3,7 +3,7 @@
 // @icon         https://www.google.com/s2/favicons?domain=pointi.jp
 // @description  auto click to the end
 // @match        https://pointi.jp/contents/magazine/*
-// @version      1.0.6
+// @version      1.0.7
 // @namespace    https://github.com/WindzCUHK/tampermonkey
 // @author       Windz
 // @downloadURL  https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/pointi/magazine.js
@@ -19,7 +19,7 @@
 	if (document.getElementById("link_list")) {
 		const action = (event) => {
 			Array.from(document.querySelectorAll("#link_list > li > a"))
-								.filter(a => !a.querySelector(".list_stamp_img"))
+				.filter(a => !a.querySelector(".list_stamp_img"))
 				.map(a => a.href)
 				.forEach(link => window.open(link, '_blank'));
 		};
@@ -42,10 +42,7 @@
 
 	// auto forward
 	function extractValue(text) {
-		if (text.search("stamp_box") !== -1) {
-			throw new Error("END");
-		}
-		if (text.search("スタンプは付与済みです") !== -1) {
+		if (text.indexOf("スタンプは付与済みです") !== -1) {
 			throw new Error("END");
 		}
 
@@ -94,8 +91,11 @@
 			"mode": "cors",
 			"credentials": "include"
 		})
-		.then(response => response.text())
-		.then((text) => {
+		.then(response => response.arrayBuffer())
+		.then((buffer) => {
+			// decode japanese before text search
+			const decoder = new TextDecoder("shift-jis");
+			const text = decoder.decode(buffer);
 			nextValue = extractValue(text);
 			console.log("value: ", nextValue);
 			next(nextValue);
@@ -108,7 +108,7 @@
 	if (movePage) {
 		next(extractValue(movePage.parentNode.innerHTML));
 	}
-	if (document.body.innerText.search("スタンプは付与済みです") !== -1) {
+	if (document.body.innerText.indexOf("スタンプは付与済みです") !== -1) {
 		closeSelf(new Error("END"));
 	}
 
