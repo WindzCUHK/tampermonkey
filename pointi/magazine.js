@@ -3,7 +3,7 @@
 // @icon         https://www.google.com/s2/favicons?domain=pointi.jp
 // @description  auto click to the end
 // @match        https://pointi.jp/contents/magazine/*
-// @version      1.0.9
+// @version      1.0.10
 // @namespace    https://github.com/WindzCUHK/tampermonkey
 // @author       Windz
 // @downloadURL  https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/pointi/magazine.js
@@ -68,6 +68,7 @@
 		// get next page
 		.then(token => {
 			return fetch(window.location.href, {
+				"redirect": 'follow', // prevent fail by 302
 				"method": "POST",
 				"body": `token=${token}`,
 				"referrer": window.location.href,
