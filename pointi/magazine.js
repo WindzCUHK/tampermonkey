@@ -3,7 +3,7 @@
 // @icon         https://www.google.com/s2/favicons?domain=pointi.jp
 // @description  auto click to the end
 // @match        https://pointi.jp/contents/magazine/*
-// @version      1.0.11
+// @version      1.0.12
 // @namespace    https://github.com/WindzCUHK/tampermonkey
 // @author       Windz
 // @downloadURL  https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/pointi/magazine.js
@@ -79,20 +79,21 @@
 			document.getElementById("outer").style.backgroundColor = "green";
 			// close tab
 			window.opener = self;
-			setTimeout(window.close, 1000);
+			setTimeout(window.close, 100);
 		} else {
 			console.error(err);
 			document.getElementById("outer").style.backgroundColor = "red";
 			// refresh tab to prevent error redirect
-			setTimeout(() => { window.location.href = window.location.href; }, 1000);
+			setTimeout(() => { window.location.href = window.location.href; }, 100);
 		}
 	}
-	async function next() {
+	async function next(pageOffset) {
 		// document.querySelector('title + script + script')
 		const searchParams = new URLSearchParams(window.location.search);
-		const subID = searchParams.get("sub");
+		const subID = searchParams.get("sub") || "ichioshi";
 		const postID = searchParams.get("no");
-		const tokenURL = `/ajax_load/load_magazine_detail.php?sub=${subID}&no=${postID}&name=next&code=88818263152dct4qojnn40kksijt`;
+		const name = searchParams.get("sub") ? "next" : parseInt(document.getElementsByClassName("current")[0].textContent) + pageOffset;
+		const tokenURL = `/ajax_load/load_magazine_detail.php?sub=${subID}&no=${postID}&name=${name}&code=88818263152dct4qojnn40kksijt`;
 
 		// get token
 		await fetch(tokenURL, { "method": "GET" })
@@ -125,7 +126,7 @@
 				throw new Error("END");
 			}
 
-			setTimeout(next, 100); // recursion with delay
+			setTimeout(next.bind(this, pageOffset + 1), 10); // recursion with delay
 		})
 		.catch((err) => {
 			closeSelf(err);
@@ -134,7 +135,7 @@
 	// auto forward main
 	if (document.getElementsByClassName("detail_date").length !== 0) {
 		// article page, start auto forward
-		next();
+		next(1);
 	}
 	if (document.body.innerText.indexOf("スタンプは付与済みです") !== -1) {
 		// single page article
