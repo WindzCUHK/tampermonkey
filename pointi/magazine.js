@@ -3,7 +3,7 @@
 // @icon         https://www.google.com/s2/favicons?domain=pointi.jp
 // @description  auto click to the end
 // @match        https://pointi.jp/contents/magazine/*
-// @version      1.0.10
+// @version      1.0.11
 // @namespace    https://github.com/WindzCUHK/tampermonkey
 // @author       Windz
 // @downloadURL  https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/pointi/magazine.js
@@ -17,14 +17,46 @@
 
 	// add open all
 	if (document.getElementById("link_list")) {
-		const action = (event) => {
-			Array.from(document.querySelectorAll("#link_list > li > a"))
+		const action = async (event) => {
+
+			// get URL list
+			const articleUrls = Array.from(document.querySelectorAll("#link_list > li > a"))
 				.filter(a => !a.querySelector(".list_stamp_img"))
-				.map(a => a.href)
-				.forEach(link => window.open(link, '_blank'));
+				.map(a => a.href);
+
+			// action on each URL
+			const createOpenClosePromise = (url) => {
+				return new Promise((resolve, reject) => {
+					const childWindow = window.open(url, '_blank');
+					childWindow.blur(); window.focus(); // stay on current page (not working)
+					const checker = window.setInterval(() => {
+						console.log('waiting: ', url);
+						if (childWindow && childWindow.closed) {
+							window.clearInterval(checker);
+							window.clearInterval(timeout);
+							console.log('closed: ', url);
+							resolve();
+						}
+					}, 1333);
+					const timeout = window.setTimeout(() => {
+						window.clearInterval(checker);
+						window.clearInterval(timeout);
+						console.log('timeout: ', url);
+						reject(new Error(`timeout: ${url}`));
+					}, 30000);
+				});
+			};
+
+			// open and close URL one by one
+			for (const url of articleUrls) {
+				await createOpenClosePromise(url);
+			}
+
+			console.log('DONE: will reload...');
+			location.reload(true);
 		};
 		const button = document.createElement("button");
-		button.innerHTML = "Open ALL";
+		button.innerHTML = "Open 1 by 1";
 		button.style.cssText = "position:fixed;top:80%;left:0;width:80%;height:100px;z-index:999;margin:auto;bottom:0;right:0;background-color:red;font-size:xx-large;";
 		button.addEventListener("click", new DualClickEventListener(action));
 
