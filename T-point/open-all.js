@@ -1,24 +1,33 @@
 // ==UserScript==
 // @name         T-point, open all
 // @description  add open all button
-// @match        https://appapi.net/cpmtm/public/*
-// @version      1.0.1
+// @match        https://lot.tsite.jp/*
+// @version      1.0.0
 // @namespace    https://github.com/WindzCUHK/tampermonkey
 // @author       Windz
 // @downloadURL  https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/T-point/open-all.js
+// @updateURL    https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/T-point/open-all.js
 // @require      https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/_require/DualClickEventListener.js
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=tsite.jp
 // @grant        none
 // ==/UserScript==
 
 (function() {
 	'use strict';
 
+	if (window.location.hash.startsWith("#/detail2")) {
+		// auto kuji
+		setTimeout(() => {
+			document.querySelector(".btn-kuji > span")?.click();
+			document.querySelector(".choose-item")?.click();
+		}, 1000);
+		return;
+	}
+
+	// open all in /#/top page
 	const action = (event) => {
-		Array.from(document.querySelectorAll('div.playcnt'))
-			.filter(ele => ele.textContent.length > 0)
-			.map(ele => ele.parentNode.parentNode.querySelector("div.item_img > a"))
-			.map(a => a.href.split('?')[0] + 'lottery')
-			.forEach(link => window.open(link, '_blank'));
+		Array.from(document.querySelectorAll(".btn-kuji:not(.btn-close)"))
+			.forEach(btn => btn.click());
 	};
 	const button = document.createElement("button");
 	button.innerHTML = "Open ALL";
