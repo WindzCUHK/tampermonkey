@@ -3,7 +3,7 @@
 // @icon         https://www.google.com/s2/favicons?domain=youtube.com
 // @description  auto click to skip ads button
 // @match        https://www.youtube.com/*
-// @version      1.0.3
+// @version      1.0.4
 // @namespace    https://github.com/WindzCUHK/tampermonkey
 // @author       Windz
 // @downloadURL  https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/youtube/auto-ads.js
@@ -46,8 +46,8 @@ const main = async function() {
         console.log(mutation)
 
         // skip ads
-        if (document.getElementsByClassName("ytp-ad-skip-button-modern").length) {
-          document.getElementsByClassName("ytp-ad-skip-button-modern")[0].click()
+        if (document.getElementsByClassName("ytp-skip-ad-button").length) {
+          document.getElementsByClassName("ytp-skip-ad-button")[0].click()
         }
         if (document.getElementsByClassName("ytp-ad-overlay-close-button").length) {
           document.getElementsByClassName("ytp-ad-overlay-close-button")[0].click()
