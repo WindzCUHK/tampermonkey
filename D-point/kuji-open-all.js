@@ -2,7 +2,7 @@
 // @name         D-point, kuji open all
 // @description  add open all button
 // @match        https://dmarket.docomo.ne.jp/kuji/common/index.html*
-// @version      1.0.2
+// @version      1.0.3
 // @namespace    https://github.com/WindzCUHK/tampermonkey
 // @author       Windz
 // @downloadURL  https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/D-point/kuji-open-all.js
@@ -24,7 +24,7 @@
 	});
 
 	const action = () => {
-		Array.from(document.querySelectorAll("#complete-lotteries li:not(.played) > a"))
+		Array.from(document.querySelectorAll("a.p-gf-serviceKuji-link"))
 			.map(n => n.href)
 			.forEach(url => {
 				const w = window.open(url, "_blank", "popup=0");
