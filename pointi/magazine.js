@@ -3,7 +3,7 @@
 // @icon         https://www.google.com/s2/favicons?domain=pointi.jp
 // @description  auto click to the end
 // @match        https://pointi.jp/contents/magazine/*
-// @version      1.0.12
+// @version      1.0.13
 // @namespace    https://github.com/WindzCUHK/tampermonkey
 // @author       Windz
 // @downloadURL  https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/pointi/magazine.js
@@ -27,6 +27,7 @@
 			// action on each URL
 			const createOpenClosePromise = (url) => {
 				return new Promise((resolve, reject) => {
+					// TODO: to prevent focus use: https://stackoverflow.com/a/60384015/28234556
 					const childWindow = window.open(url, '_blank');
 					childWindow.blur(); window.focus(); // stay on current page (not working)
 					const checker = window.setInterval(() => {
@@ -92,7 +93,8 @@
 		const searchParams = new URLSearchParams(window.location.search);
 		const subID = searchParams.get("sub") || "ichioshi";
 		const postID = searchParams.get("no");
-		const name = searchParams.get("sub") ? "next" : parseInt(document.getElementsByClassName("current")[0].textContent) + pageOffset;
+		// const name = searchParams.get("sub") ? "next" : parseInt(document.getElementsByClassName("current")[0].textContent) + pageOffset;
+		const name = "next";
 		const tokenURL = `/ajax_load/load_magazine_detail.php?sub=${subID}&no=${postID}&name=${name}&code=88818263152dct4qojnn40kksijt`;
 
 		// get token

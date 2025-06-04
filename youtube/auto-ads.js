@@ -46,11 +46,15 @@ const main = async function() {
         console.log(mutation)
 
         // skip ads
+        const event = new Event("click", { bubbles: true });
+        event.isTrusted = true // cannot set...
         if (document.getElementsByClassName("ytp-skip-ad-button").length) {
-          document.getElementsByClassName("ytp-skip-ad-button")[0].click()
+          document.getElementsByClassName("ytp-skip-ad-button")[0].click();
+          document.getElementsByClassName("ytp-skip-ad-button")[0].dispatchEvent(event);
         }
         if (document.getElementsByClassName("ytp-ad-overlay-close-button").length) {
-          document.getElementsByClassName("ytp-ad-overlay-close-button")[0].click()
+          document.getElementsByClassName("ytp-ad-overlay-close-button")[0].click();
+          document.getElementsByClassName("ytp-ad-overlay-close-button")[0].dispatchEvent(event);
         }
       }
     });
