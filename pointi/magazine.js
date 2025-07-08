@@ -3,7 +3,7 @@
 // @icon         https://www.google.com/s2/favicons?domain=pointi.jp
 // @description  auto click to the end
 // @match        https://pointi.jp/contents/magazine/*
-// @version      1.0.13
+// @version      1.0.14
 // @namespace    https://github.com/WindzCUHK/tampermonkey
 // @author       Windz
 // @downloadURL  https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/pointi/magazine.js
@@ -91,7 +91,8 @@
 	async function next(pageOffset) {
 		// document.querySelector('title + script + script')
 		const searchParams = new URLSearchParams(window.location.search);
-		const subID = searchParams.get("sub") || "ichioshi";
+		const defaultSubID = window.location.pathname.includes('magazine/atpress') ? "atpress" : "ichioshi";
+		const subID = searchParams.get("sub") || defaultSubID;
 		const postID = searchParams.get("no");
 		// const name = searchParams.get("sub") ? "next" : parseInt(document.getElementsByClassName("current")[0].textContent) + pageOffset;
 		const name = "next";
