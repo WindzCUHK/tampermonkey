@@ -3,7 +3,7 @@
 // @icon         https://www.google.com/s2/favicons?domain=pointi.jp
 // @description  auto click to the end
 // @match        https://pointi.jp/contents/magazine/*
-// @version      1.0.14
+// @version      1.0.15
 // @namespace    https://github.com/WindzCUHK/tampermonkey
 // @author       Windz
 // @downloadURL  https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/pointi/magazine.js
@@ -64,12 +64,45 @@
 		// cmd + E => open all
 		document.addEventListener('keydown', (e) => {
 			if (e.metaKey && e.key === 'e') {
+				location.hash = 'autoStart';
 				button.click();
 			}
 		});
 
 		const body = document.body;
 		body.appendChild(button);
+
+		// if URL contains #autoStart=true, then click the button automatically after 3 seconds
+		if (location.hash.includes('autoStart')) {
+			setTimeout(() => {
+				button.click();
+			}, 3000);
+
+			// add rainbow border animation
+			const dynamicStyles = document.createElement('style');
+			dynamicStyles.sheet.insertRule(`
+				@property --angle {
+					syntax: '<angle>';
+					initial-value: 0deg;
+					inherits: false;
+				}
+			`, 0);
+			document.head.appendChild(dynamicStyles);
+			button.style.border = "0.5em solid";
+			button.style.borderImage = "conic-gradient(from var(--angle), red, yellow, lime, aqua, blue, magenta, red) 1";
+			button.animate([
+				// key frames
+				{ '--angle': '0deg' },
+				{ '--angle': '360deg' }
+			], {
+				// sync options
+				duration: 300,
+				easing: 'linear',
+				direction: 'alternate',
+				iterations: Infinity
+			});
+		}
+
 		return;
 	}
 
