@@ -2,7 +2,7 @@
 // @name         T-point, open all
 // @description  add open all button
 // @match        https://lot.tsite.jp/*
-// @version      1.0.1
+// @version      1.0.2
 // @namespace    https://github.com/WindzCUHK/tampermonkey
 // @author       Windz
 // @downloadURL  https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/T-point/open-all.js
@@ -18,9 +18,13 @@
 	if (window.location.hash.startsWith("#/detail2")) {
 		// auto kuji
 		const jitter = 3000 + Math.random() * 2000; // 3 to 5 seconds
-		setTimeout(() => {
+		let tryCount = 0;
+		setInterval(() => {
 			document.querySelector(".btn-kuji > span")?.click();
 			document.querySelector(".choose-item")?.click();
+			if (++tryCount > 3) {
+				clearInterval(this);
+			}
 		}, jitter);
 		return;
 	}
