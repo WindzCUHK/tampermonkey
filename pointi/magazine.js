@@ -3,7 +3,7 @@
 // @icon         https://www.google.com/s2/favicons?domain=pointi.jp
 // @description  auto click to the end
 // @match        https://pointi.jp/contents/magazine/*
-// @version      1.0.15
+// @version      1.0.16
 // @namespace    https://github.com/WindzCUHK/tampermonkey
 // @author       Windz
 // @downloadURL  https://raw.githubusercontent.com/WindzCUHK/tampermonkey/master/pointi/magazine.js
@@ -80,6 +80,7 @@
 
 			// add rainbow border animation
 			const dynamicStyles = document.createElement('style');
+			document.head.appendChild(dynamicStyles);
 			dynamicStyles.sheet.insertRule(`
 				@property --angle {
 					syntax: '<angle>';
@@ -87,7 +88,6 @@
 					inherits: false;
 				}
 			`, 0);
-			document.head.appendChild(dynamicStyles);
 			button.style.border = "0.5em solid";
 			button.style.borderImage = "conic-gradient(from var(--angle), red, yellow, lime, aqua, blue, magenta, red) 1";
 			button.animate([
